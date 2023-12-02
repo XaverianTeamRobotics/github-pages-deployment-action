@@ -8,7 +8,7 @@ When creating separate repositories for our different websites, we noticed that 
 
 ## How to use
 
-1. Ensure that your successfully builds on `npm run build`.
+1. Ensure that your website successfully builds on `npm run build`.
 2. Enable GitHub Pages in your repository and set the source to GitHub Actions. This will be for "real" public deployments.
 3. Create a new project in Cloudflare Pages for the new repository. This will be for test deployments to preview changes before making them public.
     1. Go to the **Workers & Pages** section in the Cloudflare dashboard
