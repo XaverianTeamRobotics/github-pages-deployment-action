@@ -58,6 +58,7 @@ jobs:
       group: pages-test-deploy-${{ github.ref }}
       cancel-in-progress: true
     permissions:
+      # This is needed for Dependabot PRs
       pull-requests: write
 
     steps:
@@ -91,8 +92,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
 
   deploy:
-    # Only run deployment from the main branch and not on pull requests
-    if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
+    # Only run deployment from the main or master branch on pushes and manual workflow runs
+    if: ${{ (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master') && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') }}
     needs:
       - build
     runs-on: ubuntu-latest
