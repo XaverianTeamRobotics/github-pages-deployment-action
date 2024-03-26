@@ -92,8 +92,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
 
   deploy:
-    # Only run deployment from the main or master branch on pushes and manual workflow runs
-    if: ${{ (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master') && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') }}
+    # Only run deployment from the main or master branch (push or workflow dispatch event)
+    if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' }}
     needs:
       - build
     runs-on: ubuntu-latest
